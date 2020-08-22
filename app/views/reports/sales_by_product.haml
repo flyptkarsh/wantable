@@ -1,0 +1,16 @@
+%h1 Sales by Product
+%h3 #{@start_date} to #{@end_date} 
+.row
+  .col-md-8
+    %table.table.table-striped
+      %thead.thead-dark
+        %tr
+          %th{:scope => "col"} Product Name
+          %th{:scope => "col"} Sold Count
+          %th{:scope => "col"} Revenue In Range
+      %tbody
+        - @products.each do |product|
+          %tr
+            %td= product.name
+            %td= product.revenue_in_date_range(@start_date, @end_date)
+            %td= product.count_in_date_range(@start_date, @end_date)

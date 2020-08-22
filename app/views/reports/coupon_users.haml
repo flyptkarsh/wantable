@@ -1,0 +1,17 @@
+%h1 Coupon User Report
+.row
+  .col-md-8
+    %table.table.table-striped
+      %thead.thead-dark
+        %tr
+          %th{:scope => "col"} Name
+          %th{:scope => "col"} Email
+          %th{:scope => "col"} Orders Count After Coupon
+          %th{:scope => "col"} Revenue After Coupon
+      %tbody
+        - @coupon_users.each do |user|
+          %tr
+            %td= user.email
+            %td= user.name
+            %td= user.order_quantity_after_date(user.coupon_use_date(@coupon))
+            %td= user.revenue_after_date(user.coupon_use_date(@coupon))

@@ -1,0 +1,14 @@
+%h1 Reports
+
+%h3 Sales By Product
+= form_with(url: "reports/sales_by_product", method: "get") do
+  = label_tag("start_date", "Start Date:")
+  = date_select("start_date", "date")
+  = label_tag("end_date", "End Date:")
+  = date_select("end_date", "date")
+  = submit_tag("Submit")
+
+%h3 Coupon User Report
+= form_with(url: "reports/coupon_users", method: "get") do
+  = select_tag "coupon_id", options_from_collection_for_select(@coupons, "id", "name")
+  = submit_tag("Submit")

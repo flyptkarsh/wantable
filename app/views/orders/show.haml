@@ -1,0 +1,61 @@
+%h1= "Order #{@order.number}"
+.row
+  .col-md-4
+    %h3 Order Details 
+    %dl
+      %dt Order Number
+      %dd= @order.number
+      %dt State
+      %dd= @order.state
+      %dt Total
+      %dd= @order.total
+      %dt Building At
+      %dd= @order.building_at
+      %dt Canceled At
+      %dd= @order.canceled_at
+      %dt Arrived At
+      %dd= @order.arrived_at
+      %dt Created At
+      %dd= @order.created_at
+      %dt Updated At
+      %dd= @order.updated_at
+  .col-md-4
+    %h3 User
+    %p= @order.user.name
+    %p= @order.user.email
+  .col-md-4
+    %h3 Address
+    %p= @order.address.address1
+    %p= @order.address.address2
+    %p= @order.address.city
+    %p= @order.address.state
+    %p= @order.address.zipcode
+  .col-md-12
+    %h3 Order Items
+    %table.table.table-striped
+      %tr
+        %th.span1 Quantity
+        %th.span1 Price
+        %th.span1 State
+      - @order.order_items do |oi|
+        %tr
+          %td= oi.quantity
+          %td= oi.price
+          %td= oi.state
+          %h3 Order Items
+  .col-md-12
+    %h3 Payments
+    %table.table.table-striped
+      %tr
+        %th.span1 Amount
+        %th.span1 State
+        %th.span1 Completed At
+        %th.span1 Refunded At
+        %th.span1 Payment Type
+      - @order.payments do |p|
+        %tr
+          %td= p.amount
+          %td= p.state
+          %td= p.completed_at
+          %td= p.refunded_at
+          %td= p.payment_type
